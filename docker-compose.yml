@@ -1,0 +1,100 @@
+version: '3'
+
+services:
+  web:
+    build:
+      context: qaa
+    stdin_open: true
+    tty: true
+    environment:
+      - DJANGO_ENV=development
+      - DEBUG=True
+      - PYTHONUNBUFFERED=1
+      - DB_USER=django
+      - DB_PASSWORD=password
+      - DB_DB=qaa_development
+      - DB_HOST=db
+      - DB_PORT=5432
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./qaa:/src
+    links:
+      - db
+      # - redis
+    depends_on:
+      - db
+      # - redis
+
+  # bot:
+  #   build:
+  #     context: askbot-devel
+  #   stdin_open: true
+  #   tty: true
+  #   environment:
+  #     - DJANGO_ENV=development
+  #     - DEBUG=False
+  #     - PYTHONUNBUFFERED=1
+  #     - POSTGRES_USER=askbot
+  #     - POSTGRES_PASSWORD=askbot
+  #     - POSTGRES_DB=askbot
+  #     - POSTGRES_HOST=postgres
+  #     - DJANGO_LOCAL_SETTINGS=/app/askbot/settings.py
+  #   volumes:
+  #     - ./askbot-devel/askbot:/app/askbot
+  #     - ./config/settings.py:/app/askbot/settings.py
+  #     - ./log:/app/askbot/log
+  #     # - ./static:/srv/app/static
+  #   ports:
+  #     - "8000:8000"
+  #   links:
+  #     - postgres
+  #     - redis
+  #   depends_on:
+  #     - postgres
+  #     - redis
+
+
+
+  # poxa:
+  #   image: edgurgel/poxa-automated:latest
+  #   environment:
+  #     - PORT=8080
+  #     - POXA_APP_KEY=app_key
+  #     - POXA_SECRET=secret
+  #     - POXA_APP_ID=releaseminion
+  #   ports:
+  #     - "8080:8080"
+  #     - "8443:8443"
+  #   # volumes:
+  #   #   - config:/app/poxa/local-config:rw
+  #   #command: sh -c 'cp /app/poxa/local-config/poxa.conf /app/poxa/running-config;trap exit TERM; /app/poxa/bin/poxa foreground & wait'
+
+  redis:
+    image: library/redis:4.0-alpine
+    ports:
+      - "6379:6379"
+
+  # nginx:
+  #   image: nginx:stable-alpine
+  #   ports:
+  #     - "80:80"
+  #   volumes:
+  #     - ./nginx/sites-enabled:/etc/nginx/conf.d/
+  #     - ./static:/srv/app/static
+  #     - ./media:/srv/app/media
+  #   links:
+  #     - web
+  #   depends_on:
+  #     - web
+
+  db:
+    image: postgres:alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: django
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: qaa_development
+    volumes:
+      - $PWD/data/postgres:/var/lib/postgresql/data
