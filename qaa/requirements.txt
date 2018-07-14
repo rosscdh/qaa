@@ -6,3 +6,4 @@ six==1.11.0
 Werkzeug==0.14.1
 psycopg2==2.7.5
 textblob==0.15.1  # nlp
+django-rq==1.1.0

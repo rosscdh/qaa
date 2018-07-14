@@ -35,6 +35,7 @@ APP_APPS = [
 
 HELPER_APPS = [
     'django_extensions',
+    # 'django_rq',
     'rest_framework',
 ]
 
@@ -124,3 +125,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+RQ_QUEUES = {
+    'default': {
+        'HOST': os.getenv('REDIS_HOST', 'redis'),
+        'PORT': os.getenv('REDIS_PORT', '6379'),
+        'DB': os.getenv('REDIS_DB', '0'),
+        #'PASSWORD': 'some-password',
+        'DEFAULT_TIMEOUT': 360,
+    }
+}

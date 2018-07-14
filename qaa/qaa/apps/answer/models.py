@@ -9,6 +9,13 @@ class Answer(models.Model):
 
     # def __str__(self):
     #     return self.a
+    @property
+    def answers(self):
+        answers = self.data.get('answers', [])
+        if not self.a:
+            return answers
+        else:
+            return [a] + answers
 
     def add_answer(self, serialized_answer):
         answers = self.data.get('answers', [])
