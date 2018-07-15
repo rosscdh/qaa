@@ -3,7 +3,7 @@ version: '3'
 services:
   backend:
     build:
-      context: qaa
+      context: backend
     stdin_open: true
     tty: true
     environment:
