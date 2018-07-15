@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Question } from './question';
-import { QuestionService } from './question/question.service';
+import { Question } from '../question/question';
+import { QuestionService } from '../question/question.service';
 
 @Component({
   selector: 'my-dashboard',
@@ -15,12 +15,11 @@ export class DashboardComponent implements OnInit {
   constructor(
     private router: Router,
     private questionService: QuestionService) {
-    console.log('fdsafd')
   }
 
   ngOnInit(): void {
     this.questionService.getQuestions()
-      .subscribe(questions => this.questions = questions);
+      .subscribe(questions => this.questions = questions.map(function(row) {return new Question(row)}));
   }
 
   gotoDetail(question: Question): void {

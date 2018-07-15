@@ -24,18 +24,18 @@ export class QuestionDetailComponent implements OnInit {
       if (params['id'] !== undefined) {
         const id = +params['id'];
         this.navigated = true;
-        this.questionService.getQuestion(id).subscribe(question => (this.question = question));
+        this.questionService.getQuestion(id).subscribe(question => (this.question = new Question(question)));
       } else {
         this.navigated = false;
-        this.question = new Question();
+        this.question = new Question({});
       }
     });
   }
 
   save(): void {
     this.questionService.save(this.question).subscribe(question => {
-      this.question = question; // saved question, w/ id if new
-      this.goBack(question);
+      this.question = new Question(question); // saved question, w/ id if new
+      this.goBack(this.question);
     }, error => (this.error = error)); // TODO: Display error message
   }
 
