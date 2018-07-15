@@ -33,11 +33,11 @@ services:
     tty: true
     environment: []
     ports:
-      - "8080:80"
+      - "8043:8043"
     volumes:
       - ./frontend:/usr/src/app
-    links:
-      - web
+    # links:
+    #   - web
       # - redis
     # depends_on:
     #   - web
