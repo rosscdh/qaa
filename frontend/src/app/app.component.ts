@@ -11,7 +11,7 @@ import { Component } from '@angular/core';
     </nav>
     <router-outlet></router-outlet>
   `,
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css', 'bulma.min.css']
 })
 export class AppComponent {
   title = 'Questions & Answers';
