@@ -18,7 +18,7 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./qaa:/src
+      - ./backend:/src
     links:
       - db
       - redis
