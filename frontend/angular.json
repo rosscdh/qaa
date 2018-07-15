@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-qaa": {
+    "angular-qaa-frontend": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -50,18 +50,18 @@
           "options": {
             "port": 4200,
             "host": "0.0.0.0",
-            "browserTarget": "angular-qaa:build"
+            "browserTarget": "angular-qaa-frontend:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-qaa:build:production"
+              "browserTarget": "angular-qaa-frontend:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-qaa:build"
+            "browserTarget": "angular-qaa-frontend:build"
           }
         },
         "test": {
@@ -102,7 +102,7 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "./protractor.conf.js",
-            "devServerTarget": "angular-qaa:serve"
+            "devServerTarget": "angular-qaa-frontend:serve"
           }
         },
         "lint": {
@@ -117,7 +117,7 @@
       }
     }
   },
-  "defaultProject": "angular-qaa",
+  "defaultProject": "angular-qaa-frontend",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "my",

@@ -36,6 +36,7 @@ APP_APPS = [
 HELPER_APPS = [
     'django_extensions',
     # 'django_rq',
+    'corsheaders',
     'rest_framework',
 ]
 
@@ -45,6 +46,7 @@ INSTALLED_APPS = DJANGO_APPS + APP_APPS + HELPER_APPS
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -126,6 +128,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+CORS_ORIGIN_WHITELIST = (
+    'localhost:4200',
+    '127.0.0.1:9000'
+)
 
 RQ_QUEUES = {
     'default': {

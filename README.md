@@ -24,14 +24,14 @@ docker attach :container_id
 ## Using the api
 
 ```
-http post http://localhost:8000/api/v1/questions/ q='How many marbles on a bust?'                                                                                                                                                 rosscdh@s
+http post http://localhost:8000/api/v1/questions/ q='How many marbles into a bus?'
 
 HTTP/1.0 201 Created
 Allow: GET, POST, HEAD, OPTIONS
 Content-Length: 99
 Content-Type: application/json
 Date: Sat, 14 Jul 2018 19:58:15 GMT
-Location: http://localhost:8000/api/v1/questions/19/
+Location: http://localhost:8000/api/v1/questions/1/
 Server: Werkzeug/0.14.1 Python/3.7.0
 Vary: Accept, Cookie
 X-Frame-Options: SAMEORIGIN
@@ -39,11 +39,11 @@ X-Frame-Options: SAMEORIGIN
 {
     "answers": [],
     "q": "How many marbles on a bust?",
-    "url": "http://localhost:8000/api/v1/questions/19/"
+    "url": "http://localhost:8000/api/v1/questions/1/"
 }
 
 
-% http post http://localhost:8000/api/v1/questions/19/answers/ q='How many marbles on a bust?'                                                                                                                                      rosscdh@s
+% http post http://localhost:8000/api/v1/questions/1/answers/ balh=fdds
 
 HTTP/1.0 400 Bad Request
 Allow: GET, POST, HEAD, OPTIONS
@@ -67,7 +67,7 @@ X-Frame-Options: SAMEORIGIN
 }
 
 
-% http post http://localhost:8000/api/v1/questions/19/answers/ answer='24' dateof='2018-07-11 22:30:00' user='Bob'                                                                                                                  rosscdh@s
+% http post http://localhost:8000/api/v1/questions/1/answers/ answer='24' dateof='2018-07-11 22:30:00' user='Bob'
 
 HTTP/1.0 200 OK
 Allow: GET, POST, HEAD, OPTIONS
@@ -86,4 +86,12 @@ X-Frame-Options: SAMEORIGIN
     }
 ]
 
+```
+
+
+### using ng
+
+```
+npm link @angular/cli
+docker-compose run --rm --entrypoint=ng frontend generate component xzy
 ```

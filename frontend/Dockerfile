@@ -4,6 +4,9 @@ EXPOSE 4200
 
 WORKDIR /usr/src/app
 
+RUN npm install -g @angular/cli && \
+    npm link @angular/cli
+
 COPY . .
 
 ENTRYPOINT ["npm"]

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Hero } from './hero';
-import { HeroService } from './hero.service';
+import { Question } from './Question';
+import { QuestionService } from './question.service';
 
 @Component({
   selector: 'my-dashboard',
@@ -10,20 +10,20 @@ import { HeroService } from './hero.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  heroes: Hero[] = [];
+  questions: Question[] = [];
 
   constructor(
     private router: Router,
-    private heroService: HeroService) {
+    private questionService: QuestionService) {
   }
 
   ngOnInit(): void {
-    this.heroService.getHeroes()
-      .subscribe(heroes => this.heroes = heroes.slice(1, 5));
+    this.questionService.getQuestions()
+      .subscribe(questions => this.questions = questions);
   }
 
-  gotoDetail(hero: Hero): void {
-    const link = ['/detail', hero.id];
+  gotoDetail(question: Question): void {
+    const link = ['/detail', question.id];
     this.router.navigate(link);
   }
 }
