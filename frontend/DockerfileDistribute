@@ -1,0 +1,21 @@
+# Stage 1
+FROM node:9.11-alpine as build
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+RUN npm run build
+
+# Stage 2
+FROM pierrezemb/gostatic
+
+EXPOSE 8043
+
+COPY --from=build /usr/src/app/dist /srv/http
+
+#CMD ["-append-header", "X-GIT_SHA:${GIT_SHA}"]

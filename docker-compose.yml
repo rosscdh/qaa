@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  web:
+  backend:
     build:
       context: qaa
     stdin_open: true
@@ -10,37 +10,42 @@ services:
       - DJANGO_ENV=development
       - DEBUG=True
       - PYTHONUNBUFFERED=1
+      - DB_HOST=db
+      - DB_PORT=5432
       - DB_USER=django
       - DB_PASSWORD=password
       - DB_DB=qaa_development
-      - DB_HOST=db
-      - DB_PORT=5432
     ports:
       - "8000:8000"
     volumes:
       - ./qaa:/src
     links:
       - db
-      # - redis
+      - redis
     depends_on:
       - db
-      # - redis
+      - redis
+    # networks:
+    #   - outside
+    #   - inside
 
   frontend:
     build:
       context: frontend
-    stdin_open: true
-    tty: true
-    environment: []
+    # stdin_open: true
+    # tty: true
+    # environment: []
     ports:
-      - "8043:8043"
+      - "4200:4200"
     volumes:
       - ./frontend:/usr/src/app
+    # networks:
+    #   - outside
     # links:
-    #   - web
+    #   - backend
       # - redis
     # depends_on:
-    #   - web
+    #   - backend
     #   - redis
 
   # bot:
@@ -71,8 +76,6 @@ services:
   #     - postgres
   #     - redis
 
-
-
   # poxa:
   #   image: edgurgel/poxa-automated:latest
   #   environment:
@@ -91,6 +94,8 @@ services:
     image: library/redis:4.0-alpine
     ports:
       - "6379:6379"
+    # networks:
+    #   - inside
 
   # nginx:
   #   image: nginx:stable-alpine
@@ -101,9 +106,9 @@ services:
   #     - ./static:/srv/app/static
   #     - ./media:/srv/app/media
   #   links:
-  #     - web
+  #     - backend
   #   depends_on:
-  #     - web
+  #     - backend
 
   db:
     image: postgres:alpine
@@ -115,3 +120,14 @@ services:
       POSTGRES_DB: qaa_development
     volumes:
       - $PWD/data/postgres:/var/lib/postgresql/data
+
+
+# networks:
+#   outside:
+#     external: true
+#     # driver: overlay
+#     # attachable: true
+#   inside:
+#     external: false
+#     # driver: overlay
+#     # attachable: true
