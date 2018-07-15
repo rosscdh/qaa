@@ -4,13 +4,14 @@ import { Observable, throwError as observableThrowError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 
 import { Question } from './question';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuestionService {
-  private apiUrl = 'http://localhost:8000/api/v1/questions/'; // URL to web api
+  private apiUrl = environment.backend.url + '/api/v1/questions/'; // URL to web api
 
   constructor(private http: HttpClient) {}
 

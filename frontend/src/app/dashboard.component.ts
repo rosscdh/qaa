@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Question } from './Question';
-import { QuestionService } from './question.service';
+import { Question } from './question';
+import { QuestionService } from './question/question.service';
 
 @Component({
   selector: 'my-dashboard',
@@ -15,6 +15,7 @@ export class DashboardComponent implements OnInit {
   constructor(
     private router: Router,
     private questionService: QuestionService) {
+    console.log('fdsafd')
   }
 
   ngOnInit(): void {

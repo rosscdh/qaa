@@ -12,13 +12,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { HeroService } from './hero.service';
 import { DashboardComponent } from './dashboard.component';
 import { HeroesComponent } from './heroes.component';
-import { HeroDetailComponent } from './hero-detail.component';
+
 import { HeroSearchComponent } from './hero-search.component';
 
 import { AnswerComponent } from './answer/answer.component';
 import { AnswerService } from './answer.service';
+
 import { QuestionComponent } from './question/question.component';
-import { QuestionService } from './question.service';
+import { QuestionDetailComponent } from './question/question-detail.component';
+import { QuestionService } from './question/question.service';
 
 
 @NgModule({
@@ -38,7 +40,7 @@ import { QuestionService } from './question.service';
     DashboardComponent,
     HeroSearchComponent,
     HeroesComponent,
-    HeroDetailComponent,
+    QuestionDetailComponent,
     AnswerComponent,
     QuestionComponent,
   ],
