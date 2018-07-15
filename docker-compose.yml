@@ -26,6 +26,23 @@ services:
       - db
       # - redis
 
+  frontend:
+    build:
+      context: frontend
+    stdin_open: true
+    tty: true
+    environment: []
+    ports:
+      - "8080:80"
+    volumes:
+      - ./frontend:/usr/src/app
+    links:
+      - web
+      # - redis
+    # depends_on:
+    #   - web
+    #   - redis
+
   # bot:
   #   build:
   #     context: askbot-devel
