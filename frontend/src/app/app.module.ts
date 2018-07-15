@@ -16,7 +16,7 @@ import { HeroesComponent } from './heroes.component';
 import { HeroSearchComponent } from './hero-search.component';
 
 import { AnswerComponent } from './answer/answer.component';
-import { AnswerService } from './answer.service';
+import { AnswerService } from './answer/answer.service';
 
 import { QuestionComponent } from './question/question.component';
 import { QuestionDetailComponent } from './question/question-detail.component';
