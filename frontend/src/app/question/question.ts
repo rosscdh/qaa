@@ -15,6 +15,9 @@ export class Question {
     }
 
     public num_answers() {
-        return this.answers.length;
+        if (this.answers.length <= 0) {
+            return 0
+        }
+        return this.answers[0].answers.length;
     }
 }
