@@ -6,7 +6,7 @@ from qaa.apps.answer.api.serializers import AnswerSerializer
 
 class QuestionSerializer(serializers.HyperlinkedModelSerializer):
     #answers = serializers.HyperlinkedRelatedField(many=True, read_only=True, view_name='api_v1:answer-detail')
-    answers = AnswerSerializer(many=True, required=False)
+    answers = AnswerSerializer(many=True, required=False, read_only=True)
 
     class Meta:
         model = Question

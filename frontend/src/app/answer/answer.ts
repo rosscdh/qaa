@@ -1,6 +1,19 @@
 export class Answer {
     id: number;
+    official_answer: string;
+    answers: SubAnswer[] ;
 
+    constructor(data: any) {
+        this.id = data.id
+        this.official_answer = data.a
+        this.answers = data.answers.map(function(row) {return new SubAnswer(row)});
+    }
+
+}
+
+export class SubAnswer {
+    id: number;
+    answer: string;
     user: string;
     dateof: string;
     down_votes: number;
@@ -8,14 +21,14 @@ export class Answer {
     polarity: number;
     subjectivity: number;
 
-    constructor(json: any) {
-        this.id = json.id
-
-        this.user = json.user
-        this.dateof = json.dateof
-        this.down_votes = json.down_votes
-        this.up_votes = json.up_votes
-        this.polarity = json.polarity
-        this.subjectivity = json.subjectivity
+    constructor(data: any) {
+        this.id = data.id
+        this.answer = data.answer
+        this.user = data.user
+        this.dateof = data.dateof
+        this.down_votes = data.down_votes
+        this.up_votes = data.up_votes
+        this.polarity = data.polarity
+        this.subjectivity = data.subjectivity
     }
 }

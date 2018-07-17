@@ -24,10 +24,7 @@ export class QuestionDetailComponent implements OnInit {
       if (params['id'] !== undefined) {
         const id = +params['id'];
         this.navigated = true;
-        this.questionService.retrieveQuestion(id).subscribe(question => {
-          this.question = question;
-          console.log(this.question.answers[0])
-        });
+        this.questionService.getQuestion(id).subscribe(question => (this.question = new Question(question)));
       } else {
         this.navigated = false;
         this.question = new Question({});

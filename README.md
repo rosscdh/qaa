@@ -11,7 +11,7 @@ docker-compose up
 
 ```
 docker compose up db redis
-docker compose up web
+docker compose up backend frontend
 ```
 
 using pdb.set_trace()

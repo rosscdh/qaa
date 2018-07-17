@@ -6,16 +6,15 @@ export class Question {
     q: string;
     answers: Answer[] ;
 
-    constructor(json: any) {
-        console.log(json)
-        this.id = json.id;
-        this.url = json.url;
-        this.q = json.q;
-        this.answers = json.answers.map(function(row) {return new Answer(row)});
+    constructor(data: any) {
+        this.id = data.id;
+        this.url = data.url;
+        this.q = data.q;
+
+        this.answers = data.answers.map(function(row) {return new Answer(row)});
     }
 
     public num_answers() {
-        console.log(this.answers)
         return this.answers.length;
     }
 }
