@@ -19,7 +19,9 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.questionService.getQuestions()
-      .subscribe(questions => this.questions = questions.map(function(row) {return new Question(row)}));
+      .subscribe(questions => this.questions = questions.map(function(row) {
+        return new Question(row)
+      }));
   }
 
   gotoDetail(question: Question): void {

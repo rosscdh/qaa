@@ -35,27 +35,23 @@
     </div>
   </nav>
 
+  <div *ngIf="question.answer && question.num_answers() > 0;else no_content_found">
 
-  <div *ngIf="question.num_answers() > 0;else no_content_found">
+    <article *ngIf="question.answer.official_answer" class="message is-dark is-success">
+      <div class="message-body">
+        <!-- Accepted Answer "a" -->
+        {{ question.answer.official_answer }} 
+      </div>
+    </article>
 
-    <div class="message" *ngFor="let main_answer of question.answers">
+    <div *ngFor="let answer of question.answer.answers">
 
-      <article *ngIf="main_answer.official_answer" class="message is-dark is-success">
+      <article class="message">
         <div class="message-body">
-          <!-- Accepted Answer "a" -->
-          {{ main_answer.official_answer }} 
+          {{ answer.answer }} 
         </div>
       </article>
 
-      <div *ngFor="let answer of main_answer.answers">
-
-        <article class="message">
-          <div class="message-body">
-            {{ answer.answer }} 
-          </div>
-        </article>
-
-      </div>
     </div>
 
   </div>

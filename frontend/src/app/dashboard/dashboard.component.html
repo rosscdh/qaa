@@ -1,16 +1,18 @@
-<section class="section">
-    <my-hero-search></my-hero-search>
-</section>
-<section class="section">
-    <div class="container">
-        <h2 class="title">Recent Questions</h2>
-        <p class="subtitle">Recently added questions</p>
-    
-        <div *ngFor="let question of questions" (click)="gotoDetail(question)" class="tile">
-            <article class="tile is-child notification is-primary">
-              <h4>{{question.q}}</h4>
-              answers: {{question.num_answers()}}
-            </article>
+<div *ngIf="questions">
+    <section class="section">
+        <my-hero-search></my-hero-search>
+    </section>
+    <section class="section">
+        <div class="container">
+            <h2 class="title">Recent Questions</h2>
+            <p class="subtitle">Recently added questions</p>
+        
+            <div *ngFor="let question of questions" (click)="gotoDetail(question)" class="tile">
+                <article *ngIf="question" class="tile is-child notification is-primary">
+                  <h4>{{question.q}}</h4>
+                  answers: {{question.num_answers()}}
+                </article>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
+</div>

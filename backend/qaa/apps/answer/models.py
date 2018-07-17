@@ -3,7 +3,10 @@ from django.contrib.postgres.fields import JSONField
 
 
 class Answer(models.Model):
-    q = models.ForeignKey('question.Question', related_name='answers', null=True, on_delete=models.SET_NULL)
+    q = models.OneToOneField('question.Question',
+                             related_name='answer',
+                             null=True,
+                             on_delete=models.SET_NULL)
     a = models.TextField(blank=True, null=True)
     data = JSONField(default={})
 

@@ -24,7 +24,7 @@ class AnswerSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Answer
-        fields = ('url', 'id', 'q', 'a', 'answers')
+        fields = ('url', 'a', 'answers')
         extra_kwargs = {
             'url': {'view_name': 'api_v1:answer-detail', 'lookup_field': 'pk'},
             'q': {'view_name': 'api_v1:question-detail', 'lookup_field': 'pk'},

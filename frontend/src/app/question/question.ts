@@ -4,20 +4,20 @@ export class Question {
     id: number;
     url: string;
     q: string;
-    answers: Answer[] ;
+    answer: Answer;
 
     constructor(data: any) {
         this.id = data.id;
         this.url = data.url;
         this.q = data.q;
 
-        this.answers = data.answers.map(function(row) {return new Answer(row)});
+        this.answer = (data.answer) ? new Answer(data.answer): null;
     }
 
     public num_answers() {
-        if (this.answers.length <= 0) {
+        if (!this.answer || !this.answer.answers || this.answer.answers.length <= 0) {
             return 0
         }
-        return this.answers[0].answers.length;
+        return this.answer.answers.length;
     }
 }

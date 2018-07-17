@@ -1,18 +1,20 @@
 export class Answer {
-    id: number;
+    //id: number;
     official_answer: string;
     answers: SubAnswer[] ;
 
     constructor(data: any) {
-        this.id = data.id
+        //this.id = data.id
         this.official_answer = data.a
-        this.answers = data.answers.map(function(row) {return new SubAnswer(row)});
+        this.answers = data.answers.map(function(row) {
+            return new SubAnswer(row)
+        });
     }
 
 }
 
 export class SubAnswer {
-    id: number;
+    //id: number;
     answer: string;
     user: string;
     dateof: string;
@@ -22,7 +24,7 @@ export class SubAnswer {
     subjectivity: number;
 
     constructor(data: any) {
-        this.id = data.id
+        //this.id = data.id
         this.answer = data.answer
         this.user = data.user
         this.dateof = data.dateof

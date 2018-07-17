@@ -30,7 +30,7 @@ export class QuestionService {
   retrieveQuestion(id: number): Observable<Question> {
     return this.http
       .get<Question[]>(this.apiUrl + id + '/')
-      .pipe(map(data => new Question(data)), catchError(this.handleError));
+      .pipe(map(data => new Question(data)), catchError(this.handleError))
     );
   }
 

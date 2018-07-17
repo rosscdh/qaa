@@ -26,7 +26,6 @@ export class QuestionDetailComponent implements OnInit {
         this.navigated = true;
         this.questionService.retrieveQuestion(id).subscribe(question => {
           this.question = question;
-          console.log(this.question.answers[0])
         });
       } else {
         this.navigated = false;
