@@ -14,6 +14,10 @@ export class Question {
         this.answer = (data.answer) ? new Answer(data.answer): null;
     }
 
+    public has_answer() {
+        return this.answer.official_answer !== null;
+    }
+
     public num_answers() {
         if (!this.answer || !this.answer.answers || this.answer.answers.length <= 0) {
             return 0

@@ -6,9 +6,9 @@ from qaa.apps.answer.models import Answer
 
 
 class SimpleAnswerSerializer(serializers.Serializer):
-    answer = serializers.CharField()
-    user = serializers.CharField()
-    dateof = serializers.DateTimeField(initial=datetime.date.today)
+    answer = serializers.CharField(required=False)
+    user = serializers.CharField(required=False)
+    dateof = serializers.DateTimeField(initial=datetime.date.today, required=False)
 
     # popularity
     down_votes = serializers.IntegerField(initial=0, default=0)

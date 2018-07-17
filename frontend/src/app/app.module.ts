@@ -12,7 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HeroService } from './hero.service';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { HeroesComponent } from './heroes.component';
+//import { HeroesComponent } from './heroes.component';
 
 import { HeroSearchComponent } from './hero-search.component';
 
@@ -40,7 +40,7 @@ import { QuestionService } from './question/question.service';
     AppComponent,
     DashboardComponent,
     HeroSearchComponent,
-    HeroesComponent,
+    // HeroesComponent,
     QuestionDetailComponent,
     AnswerComponent,
     QuestionComponent,

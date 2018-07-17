@@ -17,7 +17,7 @@ class QuestionViewSet(viewsets.ModelViewSet):
     serializer_class = QuestionSerializer
 
     @action(methods=['post', 'get'], detail=True)
-    def answers(self, request, pk=None):
+    def answer(self, request, pk=None):
         question = self.get_object()
         answer, is_new = Answer.objects.get_or_create(q=question)
         serializer = AnswerSerializer(answer, context={'request': request})

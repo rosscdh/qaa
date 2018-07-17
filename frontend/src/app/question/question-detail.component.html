@@ -30,7 +30,7 @@
     <div class="level-item has-text-centered">
       <div>
         <p class="heading">Answered</p>
-        <p class="title">Yes/No</p>
+        <p class="title">{{ question.has_answer() }}</p>
       </div>
     </div>
   </nav>
@@ -38,20 +38,32 @@
   <div *ngIf="question.answer && question.num_answers() > 0;else no_content_found">
 
     <article *ngIf="question.answer.official_answer" class="message is-dark is-success">
+      <div class="message-title">Official Answer</div>
       <div class="message-body">
         <!-- Accepted Answer "a" -->
         {{ question.answer.official_answer }} 
       </div>
     </article>
 
+    <h2>Other Answers</h2>
     <div *ngFor="let answer of question.answer.answers">
-
+      <hr/>
       <article class="message">
         <div class="message-body">
-          {{ answer.answer }} 
-<a class="button is-success is-outlined">Vote Up</a>
-Current Vote
-<a class="button is-danger is-outlined">Vote Down</a>
+          <div class="columns is-mobile">
+            <div class="column is-three-quarters">
+                {{ answer.answer }}
+                <small>{{ answer.dateof }}</small>
+            </div>
+            <div class="column">
+              <a class="button is-success">Vote Up</a>
+              Current Vote
+              <a class="button is-warning">Vote Down</a>
+              <a class="button is-info is-outlined">Make Official</a>
+              <a class="button is-danger is-outlined">Delete</a>
+            </div>
+          </div>
+          
         </div>
       </article>
 

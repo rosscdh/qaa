@@ -18,7 +18,7 @@ class Answer(models.Model):
         if not self.a:
             return answers
         else:
-            return [a] + answers
+            return [self.a] + answers
 
     def add_answer(self, serialized_answer):
         answers = self.data.get('answers', [])
