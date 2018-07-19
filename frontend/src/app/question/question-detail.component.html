@@ -35,9 +35,9 @@
     </div>
   </nav>
 
-  <div *ngIf="question.answer && question.num_answers() > 0;else no_content_found">
+  <div class="box">
 
-    <article *ngIf="question.answer.official_answer" class="message is-dark is-success">
+    <article *ngIf="question.answer && question.answer.official_answer" class="message is-dark is-success">
       <div class="message-title">Official Answer</div>
       <div class="message-body">
         <!-- Accepted Answer "a" -->
@@ -46,7 +46,7 @@
     </article>
 
     <article class="message is-info">
-      <div class="message-body">
+      <div class="box">
         <!-- Accepted Answer "a" -->
         <qaa-answer-form></qaa-answer-form>
       </div>
@@ -56,6 +56,12 @@
 
 
     <h2>Other Answers</h2>
+    <article ngShow="question.answer && question.num_answers() > 0" class="message is-dark is-success">
+      <div class="message-body">
+        There are no answers provided yet, feel free to add one.
+      </div>
+    </article>
+
     <div *ngFor="let answer of question.answer.answers">
       <hr/>
       <article class="message">
@@ -81,13 +87,5 @@
 
   </div>
 
-
-  <ng-template #no_content_found>
-  <article class="message is-dark is-success">
-    <div class="message-body">
-      There are no answers provided yet, feel free to add one.
-    </div>
-  </article>
-  </ng-template>
 
 </div>
