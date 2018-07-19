@@ -15,11 +15,11 @@ export class Question {
     }
 
     public has_answer() {
-        return this.answer.official_answer !== null;
+        return (this.answer) ? this.answer.official_answer !== null : false;
     }
 
     public num_answers() {
-        if (!this.answer || !this.answer.answers || this.answer.answers.length <= 0) {
+        if (!this.answer || !this.answer.answers) {
             return 0
         }
         return this.answer.answers.length;

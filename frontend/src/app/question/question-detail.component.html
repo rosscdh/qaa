@@ -62,6 +62,7 @@
       </div>
     </article>
 
+    <span *ngIf="question.answer">
     <div *ngFor="let answer of question.answer.answers">
       <hr/>
       <article class="message">
@@ -82,8 +83,8 @@
           
         </div>
       </article>
-
     </div>
+    </span>
 
   </div>
 
