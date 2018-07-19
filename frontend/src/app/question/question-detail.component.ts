@@ -1,12 +1,18 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, QueryList, ViewChild, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormsModule }   from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
+
 import { Question } from './question';
 import { QuestionService } from './question.service';
+
+import { AnswerFormComponent } from '../answer/answer-form.component';
+
 
 @Component({
   selector: 'my-question-detail',
   templateUrl: './question-detail.component.html',
-  styleUrls: ['./question-detail.component.css']
+  styleUrls: ['./question-detail.component.css'],
+  directives: [AnswerFormComponent]
 })
 export class QuestionDetailComponent implements OnInit {
   @Input() question: Question;

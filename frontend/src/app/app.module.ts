@@ -17,11 +17,13 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroSearchComponent } from './hero-search.component';
 
 import { AnswerComponent } from './answer/answer.component';
+import { AnswerFormComponent } from './answer/answer-form.component';
 import { AnswerService } from './answer/answer.service';
 
 import { QuestionComponent } from './question/question.component';
 import { QuestionDetailComponent } from './question/question-detail.component';
 import { QuestionService } from './question/question.service';
+import { QuestionFormComponent } from './question-form/question-form.component';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { QuestionService } from './question/question.service';
     // HeroesComponent,
     QuestionDetailComponent,
     AnswerComponent,
+    AnswerFormComponent,
     QuestionComponent,
+    QuestionFormComponent,
   ],
   providers: [HeroService, QuestionService, AnswerService],
   bootstrap: [AppComponent]

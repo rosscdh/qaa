@@ -1,0 +1,25 @@
+<div class="container">
+    <h3>Add an Answer</h3>
+    <div [hidden]="submitted">
+        <form (ngSubmit)="onSubmit()" #answerForm="ngForm">
+        {{diagnostic}}
+          <div class="field">
+            <label class="label" for="answer">Message</label>
+            <div [hidden]="answer.valid || answer.pristine"
+                 class="alert alert-danger">
+              Message is required
+            </div>
+            <textarea required
+                      [(ngModel)]="model.answer"
+                      name="answer" #answer="ngModel"
+                      id="answer"
+                      class="textarea" #spy></textarea>
+            <br>TODO: remove this: {{spy.className}}
+
+          </div>
+     
+          <button type="submit" class="btn btn-success" [hidden]="!answerForm.form.valid">Submit</button>
+     
+        </form>
+    </div>
+</div>
